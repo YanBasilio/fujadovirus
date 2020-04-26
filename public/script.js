@@ -1,10 +1,9 @@
 $(document).ready(function(){
     var tela = {'x': screen.width, 'y': screen.height};
-    
-    $('#parede_campo_top').attr('style','position:absolute; top:0px; left:0; width:'+tela.x+'px;height:1px;');
-    $('#parede_campo_bottom').attr('style','position:absolute; bottom:0px; left:0; width:'+tela.x+'px;height:1px;');
-    $('#parede_campo_right').attr('style','position:absolute; top:0px; right:0;width:1px;height:'+tela.y+'px;');
-    $('#parede_campo_left').attr('style','position:absolute; top:0px; left:0; width:1px;height:'+tela.y+'px;');
+    var campo_h = tela.y - 130;
+    $('#campo').attr('style', 'height:'+campo_h+'px');
+    $('#parede_campo_left').attr('style', 'height:'+campo_h+'px;');
+    $('#parede_campo_right').attr('style', 'height:'+campo_h+'px;');
     insere_virus();
 });
 
@@ -27,34 +26,28 @@ function insere_virus(){
         perde_partida('saiu_tela');
     });
 
-    
-    segue_ponteiro();
     setTimeout(() => {
         insere_virus();
     }, 2000);
 
+
+    var campo_h = screen.height - 130;
     var mouse_x = 0;
     var mouse_y = 0;
 
     $(document).on('mousemove', function(mouse){
         mouse_x = mouse.clientX;
         mouse_y = mouse.clientY;
-        $('.virus').animate({
-            top: mouse_y+'px',
-            left: mouse_x+'px'
-        }, "100");
+        if(mouse_x <= campo_h){
+            $('.virus').animate({
+                top: mouse_y+'px',
+                left: mouse_x+'px'
+            }, "100");
+        }
 
     });
 
    
-}
-
-function segue_ponteiro(){
-    
-}
-
-function getposition (){
-    
 }
 
 function perde_partida(tipo = 'virus'){

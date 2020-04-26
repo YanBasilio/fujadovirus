@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "fujadovirus",
     "public": "public",
     "ignore": [
       "firebase.json",
