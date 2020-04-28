@@ -1,3 +1,5 @@
+bool = true;
+
 $(document).ready(function(){
     var tela = {'x': screen.width, 'y': screen.height};
     var campo_h = tela.y - 130;
@@ -5,6 +7,20 @@ $(document).ready(function(){
     $('#parede_campo_left').attr('style', 'height:'+campo_h+'px;');
     $('#parede_campo_right').attr('style', 'height:'+campo_h+'px;');
     insere_virus();
+    desbloqueia_tempo();
+
+    $(document).on('mousemove', function(mouse){
+        mouse_x = mouse.clientX;
+        mouse_y = mouse.clientY;
+        if(bool){
+            bool = false;
+            $('.virus').animate({
+                top: mouse_y+'px',
+                left: mouse_x+'px'
+            },200);
+            
+        }
+    });
 });
 
 function insere_virus(){
@@ -29,25 +45,13 @@ function insere_virus(){
     setTimeout(() => {
         insere_virus();
     }, 2000);
+}
 
-
-    var campo_h = screen.height - 130;
-    var mouse_x = 0;
-    var mouse_y = 0;
-
-    $(document).on('mousemove', function(mouse){
-        mouse_x = mouse.clientX;
-        mouse_y = mouse.clientY;
-        if(mouse_x <= campo_h){
-            $('.virus').animate({
-                top: mouse_y+'px',
-                left: mouse_x+'px'
-            }, "100");
-        }
-
-    });
-
-   
+function desbloqueia_tempo(){
+    bool = true;
+    setTimeout(()=>{
+        desbloqueia_tempo();
+    }, 200);
 }
 
 function perde_partida(tipo = 'virus'){
