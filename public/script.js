@@ -26,23 +26,26 @@ $(document).ready(function(){
     $('#parede_campo_right').attr('style', 'height:'+campo_h+'px;');
     
     // $('#modalInicio').modal('show'); 
-    insere_virus();
-    desbloqueia_movimento();
-    $(document).on('mousemove', function(mouse){
-        mouse_x = mouse.clientX;
-        mouse_y = mouse.clientY;
-        if(bool){
-            bool = false;
-            $('.virus').animate({
-                top: mouse_y+'px',
-                left: mouse_x+'px'
-            }, niveis_dificultade[dificuldade]["segue_cursor"] );
+    $('#id01').attr('style', 'display:block');
+
+    // insere_virus();
+    // desbloqueia_movimento();
+    // $(document).on('mousemove', function(mouse){
+    //     mouse_x = mouse.clientX;
+    //     mouse_y = mouse.clientY;
+    //     if(bool){
+    //         bool = false;
+    //         $('.virus').animate({
+    //             top: mouse_y+'px',
+    //             left: mouse_x+'px'
+    //         }, niveis_dificultade[dificuldade]["segue_cursor"] );
             
-        }
-    });
+    //     }
+    // });
 });
 
 function inicia_jogo(){
+    $('#id01').attr('style', 'display:none');
     dificuldade = $('input[name="dificuldade"]:checked').val();
 
     insere_virus();
@@ -53,7 +56,10 @@ function inicia_jogo(){
         mouse_y = mouse.clientY;
         if(bool){
             bool = false;
-            var y = $('.virus').css('top');
+            $('.virus').animate({
+                top: mouse_y+'px',
+                left: mouse_x+'px'
+            }, niveis_dificultade[dificuldade]["segue_cursor"] );
             
         }
     });

@@ -10,13 +10,14 @@
         <meta name="author" content="Yan T. Basilio" />
         <link rel="icon" href="img/virus.ico" />
         <title>Fuja do Virus</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body>
   
     <!-- MODAL INICIO -->
-    <div class="modal fade" id="modalInicio" tabindex="-1" role="dialog" aria-labelledby="modalInicioTitle" aria-hidden="true">
+    <!-- <div class="modal fade" id="modalInicio" tabindex="-1" role="dialog" aria-labelledby="modalInicioTitle" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -48,13 +49,48 @@
             <button type="button" class="btn btn-success col-md-12" data-dismiss="modal" onclick="inicia_jogo()">COMEÇAR</button>
             </div>
         </div>
+        </div> 
+    </div> -->
+
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <header class="w3-container "> 
+                    <h2 class="w3-center">Fuja do Virus</h2>
+                    <span onclick="document.getElementById('id01').style.display='none'" 
+                    class="w3-button w3-display-topright">&times;</span>
+                </header>
+                <div class="w3-container" style="margin-bottom: 15px">
+                    <h4 class=" w3-center">Fuja do vírus com o cursor do mouse e prove que você é mais rápido que ele.</h4>
+                    <div class="w3-container">
+                        <p>Escolha o nível de dificuldade</p>
+                        <div>
+                            <input id="dificuldade_facil" type="radio" name="dificuldade" value="facil">
+                            <label for="huey">Fácil</label>
+                        </div>
+                        <div>
+                            <input id="dificuldade_media" type="radio" name="dificuldade" value="media" checked>
+                            <label for="dificuldade_media">Média</label>
+                        </div>
+                        <div>
+                            <input id="dificuldade_dificil" type="radio" name="dificuldade" value="dificil">
+                            <label for="dificuldade_dificil">Difícil</label>
+                        </div>
+                    </div>
+                </div>
+                <footer class="w3-container" style="margin-bottom: 15px">
+                    <div class="w3-third"></div>
+                    <button class="w3-button w3-green w3-col" style="90%" onclick="inicia_jogo()">COMEÇAR</button>
+                    <div class="w3-third"></div>
+                </footer>
+            </div>
         </div>
     </div>
         <div id="div-mensagem">
             <h1 id="mensagem"></h1>
         </div>
 
-        <div id="campo" class="col-md-12">
+        <div id="campo" class="w3-col" style="width:100%">
             <div id="parede_campo_top" class="parede_campo"></div>
             <div id="parede_campo_right" class="parede_campo"></div>
             <div id="parede_campo_bottom" class="parede_campo"></div>
@@ -70,7 +106,7 @@
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
-    
+
 <!-- Remember to include jQuery :) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
