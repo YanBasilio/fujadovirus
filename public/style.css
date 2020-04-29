@@ -1,20 +1,14 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 #campo{
     background-color: darkgray;
     position: absolute;
     top:0px;
     left: 0px;
-    width: 100%;
 }
 
 #div-recorde{
     position: fixed;
     bottom: 5px;
     left: 5px;
-    width: 150px;
     font-size: 18px;
     color: #4f4f4f;
     text-align: left;
@@ -26,10 +20,10 @@ body{
 
 .virus{
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background-image: url('img/virus.png');
-    background-size: 50px 50px;
+    background-size: 30px 30px;
     background-repeat: no-repeat;
 }
 
