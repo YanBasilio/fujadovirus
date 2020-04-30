@@ -1,4 +1,11 @@
+//Globais
 bool = true;
+desbloqueado = true;
+dificuldade = "media";
+campo_h = 0;
+tela = null;
+recordes_atual = null;
+
 niveis_dificultade = {
     "dificil":{
         "segue_cursor": 200,
@@ -16,44 +23,66 @@ niveis_dificultade = {
         "insere_virus": 2000
     }
 };
-dificuldade = "media";
+
+firebaseConfig = {
+    apiKey: "AIzaSyB7hXDUdKvU-61w1qFKSk9wfC5z625TGIk",
+    authDomain: "fujadovirus.firebaseapp.com",
+    databaseURL: "https://fujadovirus.firebaseio.com",
+    projectId: "fujadovirus",
+    storageBucket: "fujadovirus.appspot.com",
+    messagingSenderId: "785278748879",
+    appId: "1:785278748879:web:e3a8a527be23fa1f118fba",
+    measurementId: "G-88WDV3LHYL"
+};
 
 $(document).ready(function(){
-    var tela = {'x': window.innerWidth, 'y': window.innerHeight};
-    var campo_h = tela.y - 150;
+    tela = {'x': window.innerWidth, 'y': window.innerHeight};
+    campo_h = tela.y - 150;
     $('#campo').attr('style', 'height:'+campo_h+'px');
     $('#parede_campo_left').attr('style', 'height:'+campo_h+'px;');
     $('#parede_campo_right').attr('style', 'height:'+campo_h+'px;');
-    
-    // $('#modalInicio').modal('show'); 
-    $('#id01').attr('style', 'display:block');
+ 
+    $('#modal_inicio').attr('style', 'display:block');
 
-    // insere_virus();
-    // desbloqueia_movimento();
-    // $(document).on('mousemove', function(mouse){
-    //     mouse_x = mouse.clientX;
-    //     mouse_y = mouse.clientY;
-    //     if(bool){
-    //         bool = false;
-    //         $('.virus').animate({
-    //             top: mouse_y+'px',
-    //             left: mouse_x+'px'
-    //         }, niveis_dificultade[dificuldade]["segue_cursor"] );
-            
-    //     }
-    // });
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    dbReference = firebase.database();
 });
 
 function inicia_jogo(){
-    $('#id01').attr('style', 'display:none');
+    $('#modal_inicio').attr('style', 'display:none');
     dificuldade = $('input[name="dificuldade"]:checked').val();
+    var desc_dificuldade = $('#label_'+dificuldade).html();
+
+    var dbRecordes = dbReference.ref().child('recordes').child(dificuldade);
+    dbRecordes.on('value', function(callback) {
+            recordes_atual = callback.val();
+
+            var html = 'Recorde <br />';
+            html += 'Dificuldade: <b>'  + desc_dificuldade +        '</b> <br/>';
+            html += 'Virus: <b>'        + recordes_atual.recorde +  '</b> <br/>';
+            html += 'Autor: <b>'        + recordes_atual.nome +     '</b>';
+
+            $('#recorde-atual').html(html);
+        }
+    )
 
     insere_virus();
     desbloqueia_movimento();
-    
+
     $(document).on('mousemove', function(mouse){
         mouse_x = mouse.clientX;
         mouse_y = mouse.clientY;
+
+        if(mouse_y < 10 || mouse_y >= campo_h || mouse_x < 10 || mouse_x >= tela.x){
+            perde_partida('saiu_tela');
+        }
+
+        $('.parede_campo').on('mouseenter', function(){
+            perde_partida('saiu_tela');
+        });
+
         if(bool){
             bool = false;
             $('.virus').animate({
@@ -67,27 +96,25 @@ function inicia_jogo(){
 }
 
 function insere_virus(){
-    var max_x = window.innerWidth - 30;
-    var max_y =  window.innerHeight - 160;
+    if(desbloqueado){
+        var max_x = window.innerWidth - 30;
+        var max_y =  window.innerHeight - 160;
+        
+        var x = parseInt(Math.random() * max_x);
+        var y = parseInt(Math.random() * max_y);
     
-    var x = parseInt(Math.random() * max_x);
-    var y = parseInt(Math.random() * max_y);
-
-    var virus = '<div class="virus" style="top:'+y+'px; left:'+x+'px;"></div>';
-
-    $('#campo').append(virus);
-
-    $('.virus').on('mouseenter', function(){
-        perde_partida('virus');
-    });
-
-    $('.parede_campo').on('mouseenter', function(){
-        perde_partida('saiu_tela');
-    });
-
-    setTimeout(() => {
-        insere_virus();
-    }, niveis_dificultade[dificuldade]["insere_virus"]);
+        var virus = '<div class="virus" style="top:'+y+'px; left:'+x+'px;"></div>';
+    
+        $('#campo').append(virus);
+    
+        $('.virus').on('mouseenter', function(){
+            perde_partida('virus');
+        });
+    
+        setTimeout(() => {
+            insere_virus();
+        }, niveis_dificultade[dificuldade]["insere_virus"]);
+    }
 }
 
 function desbloqueia_movimento(){
@@ -97,17 +124,44 @@ function desbloqueia_movimento(){
     }, niveis_dificultade[dificuldade]["desbloqueia_movimento"]);
 }
 
-function perde_partida(tipo = 'virus'){
+function salvar_recorde() {
     var qtd = $('.virus').length;
-    if(tipo == 'virus'){
-        $('#div-mensagem').find('#mensagem').html('Você perdeu com '+qtd+' virus.')
-    }else if(tipo == 'saiu_tela'){
-        $('#div-mensagem').find('#mensagem').html('Você perdeu. saiu do campo de jogo');
+    var usuario = $('#ipt_nome').val();
+    if(usuario.length > 0){
+        firebase.database().ref('recordes/'+dificuldade).set(
+            { nome: usuario, recorde: qtd }
+        );
 
+        reiniciar_jogo();
+    }else{
+        alert("Um recordista merece ser lembrado! \n\n Informe o seu nome.");
     }
-    $('#div-mensagem').show();
+}
 
-    setTimeout(() => {
-        document.location.reload(true);
-    }, 2000);
+function perde_partida(tipo = 'virus'){
+    desbloqueado = false;
+    var qtd = $('.virus').length;
+
+    if(qtd > parseInt(recordes_atual.recorde)){
+        $('#nivel_recorde').html(dificuldade);
+        $('#recorde_antigo').html(recordes_atual.recorde);
+        $('#recorde_novo').html(qtd);
+
+        $('#modal_recorde').attr('style', 'display:block');
+
+    }else{
+        if(tipo == 'virus'){
+            $('#titu-perda').html('Nããão!!');
+            $('#mensagem_perda').html('Você foi infectado com '+qtd+' virus.');
+        }else if(tipo == 'saiu_tela'){
+            $('#titu-perda').html('Fique em casa!!');
+            $('#mensagem_perda').html('Você não respeitou o isolamento e acabou sendo infectado.');
+        }
+        
+        $('#modal_perda').attr('style', 'display:block');
+    }
+}
+
+function reiniciar_jogo(){
+    document.location.reload(true);
 }

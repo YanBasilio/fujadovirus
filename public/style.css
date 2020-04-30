@@ -1,8 +1,9 @@
 #campo{
     background-color: darkgray;
     position: absolute;
-    top:0px;
-    left: 0px;
+    top:1%;
+    left: 1%;
+    width: 98%;
 }
 
 #div-recorde{
@@ -15,7 +16,7 @@
 }
 
 #recorde-atual{
-    font-size: 22px;
+    font-size: 17px;
 }
 
 .virus{
@@ -47,7 +48,7 @@
     top:0px; 
     left:0px;
     width:100%;
-    height:10px;
+    height:3%;
 }
 
 #parede_campo_bottom { 
@@ -56,7 +57,7 @@
     bottom:0px; 
     left:0px; 
     width:100%;
-    height:10px;
+    height:3%;
 }
 
 #parede_campo_right { 
@@ -64,7 +65,7 @@
     position:absolute; 
     top:0px; 
     right:0px;
-    width:10px;
+    width:1%;
     height:100%;
 }
 
@@ -73,6 +74,6 @@
     position:absolute; 
     top:0px; 
     left:0px; 
-    width:10px; 
+    width:1%; 
     height:100%;
 }
