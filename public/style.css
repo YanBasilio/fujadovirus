@@ -1,5 +1,9 @@
-#campo{
+body{
     background-color: darkgray;
+}
+
+#campo{
+    background-color: #FFF !important;
     position: absolute;
     top:1%;
     left: 1%;
@@ -8,11 +12,22 @@
 
 #div-recorde{
     position: fixed;
+    height: 20%;
     bottom: 5px;
     left: 5px;
     font-size: 18px;
     color: #4f4f4f;
     text-align: left;
+}
+
+#div-pontuacao{
+    position: fixed;
+    height: 20%;
+    bottom: 5px;
+    right: 5px;
+    font-size: 18px;
+    color: #4f4f4f;
+    text-align: right;
 }
 
 #recorde-atual{

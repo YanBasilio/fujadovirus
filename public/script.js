@@ -5,22 +5,27 @@ dificuldade = "media";
 campo_h = 0;
 tela = null;
 recordes_atual = null;
+parado = 0;
+qtd_virus = 0;
 
 niveis_dificultade = {
     "dificil":{
         "segue_cursor": 200,
         "desbloqueia_movimento": 150,
-        "insere_virus": 500
+        "insere_virus": 500,
+        "max_parado" : 10,
     },
     "media":{
         "segue_cursor": 300,
         "desbloqueia_movimento": 200,
-        "insere_virus": 1000
+        "insere_virus": 1000,
+        "max_parado" : 5,
     },
     "facil":{
         "segue_cursor": 1000,
         "desbloqueia_movimento": 800,
-        "insere_virus": 2000
+        "insere_virus": 2000,
+        "max_parado" : 3,
     }
 };
 
@@ -74,6 +79,7 @@ function inicia_jogo(){
     $(document).on('mousemove', function(mouse){
         mouse_x = mouse.clientX;
         mouse_y = mouse.clientY;
+        parado = 0;
 
         if(mouse_y < 10 || mouse_y >= campo_h || mouse_x < 10 || mouse_x >= tela.x){
             perde_partida('saiu_tela');
@@ -107,10 +113,18 @@ function insere_virus(){
     
         $('#campo').append(virus);
     
+        qtd_virus++;
+        $('#pt_atual').html(qtd_virus);
+
         $('.virus').on('mouseenter', function(){
             perde_partida('virus');
         });
     
+        parado++; //variavel para não ficar parado
+        if(parado > niveis_dificultade[dificuldade]['max_parado']){
+            perde_partida('parado');
+        }
+
         setTimeout(() => {
             insere_virus();
         }, niveis_dificultade[dificuldade]["insere_virus"]);
@@ -153,9 +167,14 @@ function perde_partida(tipo = 'virus'){
         if(tipo == 'virus'){
             $('#titu-perda').html('Nããão!!');
             $('#mensagem_perda').html('Você foi infectado com '+qtd+' virus.');
+
         }else if(tipo == 'saiu_tela'){
             $('#titu-perda').html('Fique em casa!!');
-            $('#mensagem_perda').html('Você não respeitou o isolamento e acabou sendo infectado.');
+            $('#mensagem_perda').html('Você não respeitou o isolamento e acabou sendo infectado. \n\n Você resistiu a '+qtd+' vírus.');
+
+        }else if(tipo == 'parado'){
+            $('#titu-perda').html('Não fique parado!');
+            $('#mensagem_perda').html('Não vale ficar parado, você resistiu a '+qtd+' vírus');
         }
         
         $('#modal_perda').attr('style', 'display:block');
