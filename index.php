@@ -8,11 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="language" content="pt-br" />
         <meta name="author" content="Yan T. Basilio" />
-        <link rel="icon" href="img/virus.ico" />
+        <link rel="icon" href="content/img/virus.ico" />
         <title>Fuja do Virus</title>
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css?<?=strtotime(date('Y-m-d H:i:s'))?>">
+        <link rel="stylesheet" type="text/css" href="content/css/style.css?<?=strtotime(date('Y-m-d H:i:s'))?>" />
     </head>
     <body>
         <div id="regressiva"></div>
@@ -122,8 +121,8 @@
 
     <!-- FUJADOVIRUS  -->
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    <script src="detectmobilebrowser.js"></script>
-    <script src="script.js"></script>
+    <script src="content/js/detectmobilebrowser.js?<?=strtotime(date('Y-m-d H:i:s'))?>"></script>
+    <script src="content/js/script.js?<?=strtotime(date('Y-m-d H:i:s'))?>"></script>
     
     <script data-ad-client="ca-pub-8708315484895922" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </html>

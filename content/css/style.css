@@ -60,7 +60,7 @@ body{
     position: absolute;
     width: 30px;
     height: 30px;
-    background-image: url('img/virus.png');
+    background-image: url('../img/virus.png');
     background-size: 30px 30px;
     background-repeat: no-repeat;
 }
