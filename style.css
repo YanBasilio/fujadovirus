@@ -2,6 +2,13 @@ body{
     background-color: darkgray;
 }
 
+.div-adsense{
+    position: fixed; 
+    bottom: 0px; 
+    max-height: 120px; 
+    width: 100%;
+}
+
 #campo{
     background-color: #FFF !important;
     position: absolute;
