@@ -7,6 +7,7 @@ tela = null;
 recordes_atual = null;
 parado = 0;
 qtd_virus = 0;
+mobile = jQuery.browser.mobile;
 
 niveis_dificultade = {
     "dificil":{
@@ -55,8 +56,30 @@ $(document).ready(function(){
     dbReference = firebase.database();
 });
 
-function inicia_jogo(){
+regressiva = '3';
+function contagem_regressiva(){
     $('#modal_inicio').attr('style', 'display:none');
+    $('#regressiva').attr('style', 'display:block');
+
+    $('#regressiva').html(regressiva);
+    
+    if(regressiva > 0){
+        setTimeout(() => {
+            contagem_regressiva();
+        },1000);
+    }else{
+        $('#regressiva').html("FUJA!!");
+        setTimeout(()=>{
+            $('#regressiva').attr('style', 'display:none');
+            inicia_jogo();
+        }, 1000);
+    }
+
+    regressiva--;
+}
+
+function inicia_jogo(){
+
     dificuldade = $('input[name="dificuldade"]:checked').val();
     var desc_dificuldade = $('#label_'+dificuldade).html();
 
@@ -92,8 +115,8 @@ function inicia_jogo(){
         if(bool){
             bool = false;
             $('.virus').animate({
-                top: mouse_y+'px',
-                left: mouse_x+'px'
+                top: (mouse_y-30)+'px',
+                left:(mouse_x-30)+'px'
             }, niveis_dificultade[dificuldade]["segue_cursor"] );
             
         }
