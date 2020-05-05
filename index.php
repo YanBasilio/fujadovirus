@@ -10,7 +10,7 @@
         <meta name="author" content="Yan T. Basilio" />
         <link rel="icon" href="content/img/virus.ico" />
         <title>Fuja do Virus</title>
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css?<?=strtotime(date('Y-m-d H:i:s'))?>">
+        <link rel="stylesheet" href="content/css/w3.css?<?=strtotime(date('Y-m-d H:i:s'))?>">
         <link rel="stylesheet" type="text/css" href="content/css/style.css?<?=strtotime(date('Y-m-d H:i:s'))?>" />
     </head>
     <body>
