@@ -16,7 +16,7 @@
     <body>
         <div id="regressiva"></div>
         <!-- MODAL INCIO -->
-        <div id="modal_inicio" class="w3-modal">
+        <!-- <div id="modal_inicio" class="w3-modal">
             <div class="w3-modal-content">
                 <div class="w3-container">
                     <header class="w3-container "> 
@@ -45,7 +45,8 @@
                     </footer>
                 </div>
             </div>
-        </div> <!-- /MODAL INCIO -->
+        </div>  -->
+        <!-- /MODAL INCIO -->
 
         <!-- MODAL RECORDE -->
         <div id="modal_recorde" class="w3-modal">
@@ -92,6 +93,29 @@
             <div id="parede_campo_right" class="parede_campo"></div>
             <div id="parede_campo_bottom" class="parede_campo"></div>
             <div id="parede_campo_left" class="parede_campo"></div>
+            
+            <div id="modal_inicio" class="w3-container">
+                <h2 class="w3-center">Fuja do Virus</h2>
+                <div class="w3-container" style="margin-bottom: 15px">
+                    <h4 class=" w3-center">Fuja do vírus com o cursor do mouse e prove que você é mais rápido que ele.</h4>
+                    <div class="w3-container">
+                        <p>Escolha o nível de dificuldade</p>
+                        <div>
+                            <input id="dificuldade_facil" type="radio" name="dificuldade" value="facil">
+                            <label id="label_facil" for="dificuldade_facil">Fácil</label>
+                        </div>
+                        <div>
+                            <input id="dificuldade_media" type="radio" name="dificuldade" value="media" checked>
+                            <label id="label_media" for="dificuldade_media">Média</label>
+                        </div>
+                        <div>
+                            <input id="dificuldade_dificil" type="radio" name="dificuldade" value="dificil">
+                            <label id="label_dificil" for="dificuldade_dificil">Difícil</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="w3-button w3-green w3-col" onclick="contagem_regressiva()">COMEÇAR</button>
+            </div>
         </div>
 
         <div id="div-recorde">
