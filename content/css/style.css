@@ -1,5 +1,10 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+
 body{
-    background-color: darkgray;
+    background: linear-gradient(to right, rgba(0,230,0,0.4), rgba(0,230,180,0.4));
 }
 
 .div-adsense{
@@ -10,7 +15,7 @@ body{
 }
 
 #campo{
-    background-color: #FFF !important;
+    background: radial-gradient(#FFF, rgba(171, 172, 172, 0.4))  !important;
     position: absolute;
     top:1%;
     left: 1%;
