@@ -59,9 +59,17 @@ $(document).ready(function(){
 regressiva = '3';
 function contagem_regressiva(){
     $('#modal_inicio').attr('style', 'display:none');
+    $('#modal_perda').attr('style', 'display:none');
+    $('#modal_recorde').attr('style', 'display:none');
     $('#regressiva').attr('style', 'display:block');
 
     $('#regressiva').html(regressiva);
+
+    $('.virus').remove();
+    bool = true;
+    desbloqueado = true;
+    parado = 0;
+    qtd_virus = 0;
     
     if(regressiva > 0){
         setTimeout(() => {
@@ -105,10 +113,12 @@ function inicia_jogo(){
         parado = 0;
 
         if(mouse_y < 10 || mouse_y >= campo_h || mouse_x < 10 || mouse_x >= tela.x){
+            console.log('aqui');
             perde_partida('saiu_tela');
         }
-
+        
         $('.parede_campo').on('mouseenter', function(){
+            console.log('aqui2');
             perde_partida('saiu_tela');
         });
 
@@ -176,34 +186,38 @@ function salvar_recorde() {
 }
 
 function perde_partida(tipo = 'virus'){
-    desbloqueado = false;
     var qtd = $('.virus').length;
 
-    if(qtd > parseInt(recordes_atual.recorde)){
-        $('#nivel_recorde').html(dificuldade);
-        $('#recorde_antigo').html(recordes_atual.recorde);
-        $('#recorde_novo').html(qtd);
+    if(desbloqueado){
+        if(qtd > parseInt(recordes_atual.recorde)){
+            $('#nivel_recorde').html(dificuldade);
+            $('#recorde_antigo').html(recordes_atual.recorde);
+            $('#recorde_novo').html(qtd);
 
-        $('#modal_recorde').attr('style', 'display:block');
+            $('#modal_recorde').attr('style', 'display:block');
 
-    }else{
-        if(tipo == 'virus'){
-            $('#titu-perda').html('Nããão!!');
-            $('#mensagem_perda').html('Você foi infectado com '+qtd+' virus.');
+        }else{
+            if(tipo == 'virus'){
+                $('#titu-perda').html('Nããão!!');
+                $('#mensagem_perda').html('Você foi infectado com '+qtd+' virus.');
 
-        }else if(tipo == 'saiu_tela'){
-            $('#titu-perda').html('Fique em casa!!');
-            $('#mensagem_perda').html('Você não respeitou o isolamento e acabou sendo infectado. \n\n Você resistiu a '+qtd+' vírus.');
+            }else if(tipo == 'saiu_tela'){
+                $('#titu-perda').html('Fique em casa!!');
+                $('#mensagem_perda').html('Você não respeitou o isolamento e acabou sendo infectado. \n\n Você resistiu a '+qtd+' vírus.');
 
-        }else if(tipo == 'parado'){
-            $('#titu-perda').html('Não fique parado!');
-            $('#mensagem_perda').html('Não vale ficar parado, você resistiu a '+qtd+' vírus');
+            }else if(tipo == 'parado'){
+                $('#titu-perda').html('Não fique parado!');
+                $('#mensagem_perda').html('Não vale ficar parado, você resistiu a '+qtd+' vírus');
+            }
+            
+            $('#modal_perda').attr('style', 'display:block');
         }
-        
-        $('#modal_perda').attr('style', 'display:block');
     }
+    desbloqueado = false;
 }
 
 function reiniciar_jogo(){
-    document.location.reload(true);
+    regressiva = 3;
+    contagem_regressiva();
+    // document.location.reload(true);
 }
