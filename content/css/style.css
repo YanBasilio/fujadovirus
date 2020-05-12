@@ -127,7 +127,14 @@ body{
     z-index: 3;
 }
 
-#titulo{
+.subtitulo{
+    font-size: 30px;
+    font-family: 'Balsamiq Sans', cursive;
+    font-weight: 600;
+    color: #2e5a2e;
+}
+
+.titulo{
     font-size: 48px;
     font-family: 'Balsamiq Sans', cursive;
     font-weight: 600;

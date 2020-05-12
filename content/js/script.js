@@ -116,16 +116,12 @@ function inicia_jogo(){
         if($(tg).attr('id') != 'campo'){
             perde_partida('saiu_tela');
         }
-        
-        $('.parede_campo').on('mouseenter', function(){
-            perde_partida('saiu_tela');
-        });
 
         if(bool){
             bool = false;
             $('.virus').animate({
-                top: (mouse_y-30)+'px',
-                left:(mouse_x-30)+'px'
+                top: (mouse_y - 30)+'px',
+                left:(mouse_x - 30)+'px'
             }, niveis_dificultade[dificuldade]["segue_cursor"] );
             
         }

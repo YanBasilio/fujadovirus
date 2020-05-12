@@ -15,15 +15,8 @@
         <link rel="stylesheet" type="text/css" href="content/css/style.css?<?=strtotime(date('Y-m-d H:i:s'))?>" />
     </head>
     <body>
-        <div id="container_principio" class="w3-container">
-            <div class="w3-center">
-                <img src="content/img/coroninha.png" style="width:250px;"/>
-                <h2 id="titulo" class="w3">Fuja do virus</h2>
-            </div>
-        </div>
-
         <div id="regressiva"></div>
-
+        
         <div id="campo" class="w3-card-4">
             <div id="parede_campo_top" class="parede_campo"></div>
             <div id="parede_campo_right" class="parede_campo"></div>
@@ -31,7 +24,11 @@
             <div id="parede_campo_left" class="parede_campo"></div>
             
             <div id="modal_inicio" class="w3-container w3-card-4">
-                <h2 class="w3-center">Fuja do Virus</h2>
+                <div class="w3-center">
+                    <img src="content/img/coroninha.png" style="width:200px;"/>
+                    <h2 class="titulo">Fuja do virus</h2>
+                </div>
+
                 <div class="w3-container" style="margin-bottom: 15px">
                     <h4 class=" w3-center">Fuja do vírus com o cursor do mouse e prove que você é mais rápido que ele.</h4>
                     <div class="w3-container">
@@ -60,7 +57,20 @@
         <div id="div-pontuacao">
             <p> Sua Pontuacao <br/><b id="pt_atual"> - </b></p>
         </div>
-        
+
+        <div class="w3-row w3-center">
+            <h4 class="subtitulo w3-center">Saiba oque são os virus, e previne-se!</h4>
+            <div class="w3-col w3-container m4">
+                <img src="content/img/coroninha.png" style="width:200px;"/>
+            </div>
+            <div class="w3-col w3-container m8">
+                São organismos simples, (para muitos não são considerados seres vivos), mas que podem ser fatais para animais e
+                seres humanos, eles não tem a estrutura de uma célula e, ao contrário das bactérias, não tem condições de se multiplicarem sozinhos.
+                Sendo assim o vírus invade e destrói a célula para se multiplicarem, e por fim saem prontos para atacar.<br/><br/>
+                Os mesmos podem passar por mutações rapidamente, com isso eles se transformam em armas letais para os seres humanos.
+            </div>
+        </div>
+
         <div class="div-adsense w3-center">
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <!-- bottom_block -->
@@ -72,6 +82,8 @@
                (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
         </div>
+
+
 
         <!-- MODAL RECORDE -->
         <div id="modal_recorde" class="w3-modal">
