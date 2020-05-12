@@ -4,7 +4,7 @@ html{
 }
 
 body{
-    background: linear-gradient(to right, rgba(0,230,0,0.4), rgba(0,230,180,0.4));
+    background: linear-gradient(to right, rgba(0,230,0,0.4), rgba(0,230,180,0.4), rgba(0,230,0,0.4));
 }
 
 .div-adsense{
@@ -38,23 +38,19 @@ body{
 }
 
 #div-recorde{
-    position: fixed;
-    height: 20%;
-    bottom: 5px;
-    left: 5px;
     font-size: 18px;
     color: #4f4f4f;
     text-align: left;
+    float: left;
+    margin: 17px;
 }
 
 #div-pontuacao{
-    position: fixed;
-    height: 20%;
-    bottom: 5px;
-    right: 5px;
     font-size: 18px;
     color: #4f4f4f;
     text-align: right;
+    float: right;
+    margin: 17px;
 }
 
 #recorde-atual{
@@ -129,4 +125,11 @@ body{
     margin-left: 20%;
     position: absolute;
     z-index: 3;
+}
+
+#titulo{
+    font-size: 48px;
+    font-family: 'Balsamiq Sans', cursive;
+    font-weight: 600;
+    color: #2e5a2e;
 }

@@ -67,7 +67,6 @@ function contagem_regressiva(){
 
     $('.virus').remove();
     bool = true;
-    desbloqueado = true;
     parado = 0;
     qtd_virus = 0;
     
@@ -79,6 +78,7 @@ function contagem_regressiva(){
         $('#regressiva').html("FUJA!!");
         setTimeout(()=>{
             $('#regressiva').attr('style', 'display:none');
+            desbloqueado = true;
             inicia_jogo();
         }, 1000);
     }
@@ -111,14 +111,13 @@ function inicia_jogo(){
         mouse_x = mouse.clientX;
         mouse_y = mouse.clientY;
         parado = 0;
-
-        if(mouse_y < 10 || mouse_y >= campo_h || mouse_x < 10 || mouse_x >= tela.x){
-            console.log('aqui');
+        var tg = mouse.target;
+        
+        if($(tg).attr('id') != 'campo'){
             perde_partida('saiu_tela');
         }
         
         $('.parede_campo').on('mouseenter', function(){
-            console.log('aqui2');
             perde_partida('saiu_tela');
         });
 
