@@ -7,28 +7,10 @@ tela = null;
 recordes_atual = null;
 parado = 0;
 qtd_virus = 0;
+niveis_dificultade = null;
 mobile = jQuery.browser.mobile;
 
-niveis_dificultade = {
-    "dificil":{
-        "segue_cursor": 200,
-        "desbloqueia_movimento": 150,
-        "insere_virus": 500,
-        "max_parado" : 10,
-    },
-    "media":{
-        "segue_cursor": 300,
-        "desbloqueia_movimento": 200,
-        "insere_virus": 1000,
-        "max_parado" : 5,
-    },
-    "facil":{
-        "segue_cursor": 1000,
-        "desbloqueia_movimento": 800,
-        "insere_virus": 2000,
-        "max_parado" : 3,
-    }
-};
+
 
 firebaseConfig = {
     apiKey: "AIzaSyB7hXDUdKvU-61w1qFKSk9wfC5z625TGIk",
@@ -53,7 +35,9 @@ $(document).ready(function(){
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-    dbReference = firebase.database();
+
+
+    // dbReference = firebase.database();
 });
 
 regressiva = '3';
@@ -91,39 +75,55 @@ function inicia_jogo(){
     dificuldade = $('input[name="dificuldade"]:checked').val();
     var desc_dificuldade = $('#label_'+dificuldade).html();
 
-    var dbRecordes = dbReference.ref().child('recordes').child(dificuldade);
-    dbRecordes.on('value', function(callback) {
-            recordes_atual = callback.val();
-
+    $.ajax({
+        'url': 'config.php?get=configuracoes',
+        'type':'POST',
+        'data':{
+            'nivel':dificuldade
+        },
+        success:function(dif){
+            dif = JSON.parse(dif);
+            niveis_dificultade = dif;
+            
+            insere_virus();
+            desbloqueia_movimento();
+        
+            $(document).on('mousemove', function(mouse){
+                mouse_x = mouse.clientX;
+                mouse_y = mouse.clientY;
+                parado = 0;
+                var tg = mouse.target;
+                
+                if($(tg).attr('id') != 'campo'){
+                    perde_partida('saiu_tela');
+                }
+        
+                if(bool){
+                    bool = false;
+                    $('.virus').animate({
+                        top: (mouse_y - 30)+'px',
+                        left:(mouse_x - 30)+'px'
+                    }, niveis_dificultade["segue_cursor"] );
+                    
+                }
+            });
+        }
+    });
+    
+    $.ajax({
+        'url': 'config.php?get=recordes',
+        'type':'POST',
+        'data':{
+            'nivel':dificuldade
+        },
+        success:function(r){
+            recordes_atual = r;
             var html = 'Recorde <br />';
             html += 'Dificuldade: <b>'  + desc_dificuldade +        '</b> <br/>';
-            html += 'Virus: <b>'        + recordes_atual.recorde +  '</b> <br/>';
-            html += 'Autor: <b>'        + recordes_atual.nome +     '</b>';
+            html += 'Virus: <b>'        + recordes_atual['recorde'] +  '</b> <br/>';
+            html += 'Autor: <b>'        + recordes_atual['nome'] +     '</b>';
 
             $('#recorde-atual').html(html);
-        }
-    )
-
-    insere_virus();
-    desbloqueia_movimento();
-
-    $(document).on('mousemove', function(mouse){
-        mouse_x = mouse.clientX;
-        mouse_y = mouse.clientY;
-        parado = 0;
-        var tg = mouse.target;
-        
-        if($(tg).attr('id') != 'campo'){
-            perde_partida('saiu_tela');
-        }
-
-        if(bool){
-            bool = false;
-            $('.virus').animate({
-                top: (mouse_y - 30)+'px',
-                left:(mouse_x - 30)+'px'
-            }, niveis_dificultade[dificuldade]["segue_cursor"] );
-            
         }
     });
 
@@ -149,13 +149,13 @@ function insere_virus(){
         });
     
         parado++; //variavel para não ficar parado
-        if(parado > niveis_dificultade[dificuldade]['max_parado']){
+        if(parado > niveis_dificultade['max_parado']){
             perde_partida('parado');
         }
 
         setTimeout(() => {
             insere_virus();
-        }, niveis_dificultade[dificuldade]["insere_virus"]);
+        }, niveis_dificultade["insere_virus"]);
     }
 }
 
@@ -163,7 +163,7 @@ function desbloqueia_movimento(){
     bool = true;
     setTimeout(()=>{
         desbloqueia_movimento();
-    }, niveis_dificultade[dificuldade]["desbloqueia_movimento"]);
+    }, niveis_dificultade["desbloqueia_movimento"]);
 }
 
 function salvar_recorde() {
