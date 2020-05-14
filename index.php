@@ -90,7 +90,7 @@
             </ul>
             </div>
             <div class="w3-col m2">&nbsp;</div>
-            <h4 class="subtitulo w3-center">PREVINA-SE!</h4>
+            <h4 class="w3-col subtitulo w3-center">PREVINA-SE!</h4>
         </div>
 
         <div class="div-adsense w3-center">
