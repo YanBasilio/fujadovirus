@@ -21,7 +21,7 @@ if(isset($_GET['get'])){
             break;
     }
 }elseif(isset($_GET['set'])){
-    switch ($_GET´['set']) {
+    switch ($_GET['set']) {
         case 'recorde':
             $nivel = $_POST['nivel'];
             
@@ -30,7 +30,7 @@ if(isset($_GET['get'])){
 
             if($_POST['recorde'] > $recorde_atual){
                 $recordes->$nivel->recorde = $_POST['recorde'];
-                $recordes->$nivel->nome = $_POST['autor'];
+                $recordes->$nivel->nome = $_POST['nome'];
             }
 
             if(file_put_contents('recordes', convert_uuencode(json_encode($recordes)))){

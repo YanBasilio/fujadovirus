@@ -76,7 +76,7 @@ function inicia_jogo(){
     var desc_dificuldade = $('#label_'+dificuldade).html();
 
     $.ajax({
-        'url': 'config.php?get=configuracoes',
+        'url': 'app.php?get=configuracoes',
         'type':'POST',
         'data':{
             'nivel':dificuldade
@@ -111,13 +111,14 @@ function inicia_jogo(){
     });
     
     $.ajax({
-        'url': 'config.php?get=recordes',
+        'url': 'app.php?get=recordes',
         'type':'POST',
         'data':{
             'nivel':dificuldade
         },
         success:function(r){
-            recordes_atual = r;
+            recordes_atual = JSON.parse(r);
+
             var html = 'Recorde <br />';
             html += 'Dificuldade: <b>'  + desc_dificuldade +        '</b> <br/>';
             html += 'Virus: <b>'        + recordes_atual['recorde'] +  '</b> <br/>';
@@ -170,11 +171,19 @@ function salvar_recorde() {
     var qtd = $('.virus').length;
     var usuario = $('#ipt_nome').val();
     if(usuario.length > 0){
-        firebase.database().ref('recordes/'+dificuldade).set(
-            { nome: usuario, recorde: qtd }
-        );
+        $.ajax({
+            'url': 'app.php?set=recorde',
+            'type':'POST',
+            'data':{
+                'nivel':dificuldade,
+                'nome':usuario,
+                'recorde':qtd
+            },
+            success:function(r){
+                reiniciar_jogo();
+            }
+        });
 
-        reiniciar_jogo();
     }else{
         alert("Um recordista merece ser lembrado! \n\n Informe o seu nome.");
     }
@@ -212,7 +221,5 @@ function perde_partida(tipo = 'virus'){
 }
 
 function reiniciar_jogo(){
-    regressiva = 3;
-    contagem_regressiva();
-    // document.location.reload(true);
+    document.location.reload(true);
 }

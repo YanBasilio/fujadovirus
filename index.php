@@ -60,15 +60,36 @@
 
         <div class="w3-row w3-center">
             <h4 class="subtitulo w3-center">Saiba oque são os virus, e previne-se!</h4>
-            <div class="w3-col w3-container m4">
-                <img src="content/img/coroninha.png" style="width:200px;"/>
+            <div class="w3-col m1">&nbsp;</div>
+            <div class="w3-col w3-container m2">
+                <img id="img-texto1"src="content/img/coroninha.png" style="width:200px;"/>
             </div>
-            <div class="w3-col w3-container m8">
+            <div id="texto1" class="w3-col w3-container m8">
                 São organismos simples, (para muitos não são considerados seres vivos), mas que podem ser fatais para animais e
                 seres humanos, eles não tem a estrutura de uma célula e, ao contrário das bactérias, não tem condições de se multiplicarem sozinhos.
                 Sendo assim o vírus invade e destrói a célula para se multiplicarem, e por fim saem prontos para atacar.<br/><br/>
                 Os mesmos podem passar por mutações rapidamente, com isso eles se transformam em armas letais para os seres humanos.
             </div>
+            <div class="w3-col m12">&nbsp;</div>
+            <div class="w3-col m2">&nbsp;</div>
+            <div class="w3-col m8" style="text-align:left;">
+            <ul>
+                <li>Lave com frequência as mãos até a altura dos punhos, com água e sabão, ou então higienize com álcool em gel 70%.</li>
+                <li>Ao tossir ou espirrar, cubra nariz e boca com lenço ou com o braço, e não com as mãos.</li>
+                <li>Evite tocar olhos, nariz e boca com as mãos não lavadas.</li>
+                <li>Ao tocar, lave sempre as mãos como já indicado.</li>
+                <li>Mantenha uma distância mínima de cerca de 2 metros de qualquer pessoa tossindo ou espirrando.</li>
+                <li>Evite abraços, beijos e apertos de mãos. Adote um comportamento amigável sem contato físico, mas sempre com um sorriso no rosto.</li>
+                <li>Higienize com frequência o celular e os brinquedos das crianças.</li>
+                <li>Não compartilhe objetos de uso pessoal, como talheres, toalhas, pratos e copos.</li>
+                <li>Mantenha os ambientes limpos e bem ventilados.</li>
+                <li>Evite circulação desnecessária nas ruas, estádios, teatros, shoppings, shows, cinemas e igrejas. Se puder, fique em casa.</li>
+                <li>Se estiver doente, evite contato físico com outras pessoas, principalmente idosos e doentes crônicos, e fique em casa até melhorar.</li>
+                <li>Durma bem e tenha uma alimentação saudável.</li>
+                <li>Utilize máscaras caseiras ou artesanais feitas de tecido em situações de saída de sua residência. </li>
+            </ul>
+            </div>
+            <div class="w3-col m2">&nbsp;</div>
         </div>
 
         <div class="div-adsense w3-center">

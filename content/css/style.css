@@ -8,8 +8,8 @@ body{
 }
 
 .div-adsense{
-    position: fixed; 
-    bottom: 0px; 
+    /* position: fixed; 
+    bottom: 0px;  */
     max-height: 120px; 
     width: 100%;
 }
@@ -139,4 +139,16 @@ body{
     font-family: 'Balsamiq Sans', cursive;
     font-weight: 600;
     color: #2e5a2e;
+}
+
+#texto1{
+    text-align: justify;
+    font-family: 'Balsamiq Sans', cursive;
+    padding:15px;
+}
+
+#img-texto1{
+    position: relative;
+    width: 200px;
+    top: -30px;
 }

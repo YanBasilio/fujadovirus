@@ -1,3 +1,4 @@
+<?php
 
 // $configuracoes = array(
 //     "dificil" => array
@@ -27,3 +28,27 @@
 //         );
 
 // file_put_contents('configuracoes', convert_uuencode(json_encode($configuracoes)));
+
+
+$recordes = array(
+    "dificil" => array
+        (
+            "recorde" => 1,
+            "nome" => 'teste'
+        ),
+
+    "media" => array
+        (
+            "recorde" => 1,
+            "nome" => 'teste'
+        ),
+
+    "facil" =>  array
+        (
+            "recorde" => 1,
+            "nome" => 'teste'
+        )
+
+        );
+
+file_put_contents('../recordes', convert_uuencode(json_encode($recordes)));
