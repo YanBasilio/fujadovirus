@@ -59,7 +59,7 @@
         </div>
 
         <div class="w3-row w3-center">
-            <h4 class="subtitulo w3-center">Saiba oque são os virus, e previne-se!</h4>
+            <h4 class="subtitulo w3-center">Saiba o que é vírus!</h4>
             <div class="w3-col m1">&nbsp;</div>
             <div class="w3-col w3-container m2">
                 <img id="img-texto1"src="content/img/coroninha.png" style="width:200px;"/>
@@ -90,6 +90,7 @@
             </ul>
             </div>
             <div class="w3-col m2">&nbsp;</div>
+            <h4 class="subtitulo w3-center">PREVINA-SE!</h4>
         </div>
 
         <div class="div-adsense w3-center">
