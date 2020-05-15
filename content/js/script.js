@@ -26,9 +26,13 @@ firebaseConfig = {
 $(document).ready(function(){
     tela = {'x': window.innerWidth, 'y': window.innerHeight};
     campo_h = tela.y - 150;
-    $('#campo').attr('style', 'height:'+campo_h+'px');
-    $('#parede_campo_left').attr('style', 'height:'+campo_h+'px;');
-    $('#parede_campo_right').attr('style', 'height:'+campo_h+'px;');
+    if(mobile){
+        $('.sub-titulo-modal').css('font-size', '4vw');
+        $('.font-posicao').css('font-size', '3vw');
+    }
+    //$('#campo').attr('style', 'height:'+campo_h+'px');
+    //$('#parede_campo_left').attr('style', 'height:'+campo_h+'px;');
+    //$('#parede_campo_right').attr('style', 'height:'+campo_h+'px;');
  
     $('#modal_inicio').attr('style', 'display:block');
 

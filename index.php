@@ -25,12 +25,12 @@
             
             <div id="modal_inicio" class="w3-container w3-card-4">
                 <div class="w3-center">
-                    <img src="content/img/coroninha.png" style="width:200px;"/>
+                    <img src="content/img/coroninha.png" style="width:10vh;"/>
                     <h2 class="titulo">Fuja do virus</h2>
                 </div>
 
                 <div class="w3-container" style="margin-bottom: 15px">
-                    <h4 class=" w3-center">Fuja do vírus com o cursor do mouse e prove que você é mais rápido que ele.</h4>
+                    <h4 class="sub-titulo-modal w3-center">Fuja do vírus com o cursor do mouse e prove que você é mais rápido que ele.</h4>
                     <div class="w3-container">
                         <p>Escolha o nível de dificuldade</p>
                         <div>
@@ -52,10 +52,10 @@
         </div>
 
         <div id="div-recorde">
-            <p  id="recorde-atual"> Recorde: <br/> - <br/> - </p>
+            <p id="recorde-atual" class="font-posicao"> Recorde: <br/> - <br/> - </p>
         </div>
         <div id="div-pontuacao">
-            <p> Sua Pontuacao <br/><b id="pt_atual"> - </b></p>
+            <p class="font-posicao"> Sua Pontuacao <br/><b id="pt_atual"> - </b></p>
         </div>
 
         <div class="w3-row w3-center">
@@ -90,7 +90,8 @@
             </ul>
             </div>
             <div class="w3-col m2">&nbsp;</div>
-            <h4 class="w3-col subtitulo w3-center">PREVINA-SE!</h4>
+            <h4 class="w3-col subtitulo w3-center">Aprenda a lavar as mãos correetamente e previna-se!</h4>
+            <iframe class="frame" src="https://www.youtube.com/embed/rsQlyIwetsE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="div-adsense w3-center">
@@ -115,7 +116,7 @@
                         <h2 class="w3-center">RECORDE!!!</h2>
                     </header>
                     <div class="w3-container  w3-center" style="margin-bottom: 15px">
-                        <h3 class=" w3-center">Uaal!! Você bateu o último recorde na dificuldade <b id="nivel_recorde">-</b>.</h3>
+                        <h3 class="sub-titulo-modal  w3-center">Uaal!! Você bateu o último recorde na dificuldade <b id="nivel_recorde">-</b>.</h3>
                         
                         <p>O recorde era de <b id="recorde_antigo"></b> e você superou com <b id="recorde_novo"></b> virus.</p>
                         
@@ -138,7 +139,7 @@
                         <h2 id="titu-perda" class="w3-center"></h2>
                     </header>
                     <div class="w3-container w3-center" style="margin-bottom: 15px">
-                         <h3 id="mensagem_perda"></h3>
+                         <h3 id="mensagem_perda" class="sub-titulo-modal"></h3>
                     </div>
                     <footer class="w3-container" style="margin-bottom: 15px">
                         <button class="w3-button w3-green w3-col" onclick="reiniciar_jogo()">Jogar Novamente</button>
