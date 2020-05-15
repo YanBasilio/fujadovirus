@@ -27,28 +27,28 @@
 
 //         );
 
-// file_put_contents('configuracoes', convert_uuencode(json_encode($configuracoes)));
+// file_put_contents('configuracoes.txt', convert_uuencode(json_encode($configuracoes)));
 
 
-$recordes = array(
-    "dificil" => array
-        (
-            "recorde" => 1,
-            "nome" => 'teste'
-        ),
+// $recordes = array(
+//     "dificil" => array
+//         (
+//             "recorde" => 1,
+//             "nome" => 'teste'
+//         ),
 
-    "media" => array
-        (
-            "recorde" => 1,
-            "nome" => 'teste'
-        ),
+//     "media" => array
+//         (
+//             "recorde" => 1,
+//             "nome" => 'teste'
+//         ),
 
-    "facil" =>  array
-        (
-            "recorde" => 1,
-            "nome" => 'teste'
-        )
+//     "facil" =>  array
+//         (
+//             "recorde" => 1,
+//             "nome" => 'teste'
+//         )
 
-        );
+//         );
 
-file_put_contents('../recordes', convert_uuencode(json_encode($recordes)));
+// file_put_contents('../recordes.txt', convert_uuencode(json_encode($recordes)));
