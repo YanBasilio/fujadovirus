@@ -13,6 +13,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="content/css/w3.css?<?=strtotime(date('Y-m-d H:i:s'))?>">
         <link rel="stylesheet" type="text/css" href="content/css/style.css?<?=strtotime(date('Y-m-d H:i:s'))?>" />
+        <script type="text/javascript">
+            window._mNHandle = window._mNHandle || {};
+            window._mNHandle.queue = window._mNHandle.queue || [];
+            medianet_versionId = "3121199";
+        </script>
+        <script src="https://contextual.media.net/dmedianet.js?cid=8CU235288" async="async"></script>
+        
     </head>
     <body>
         <div id="regressiva"></div>
@@ -95,15 +102,16 @@
         </div>
 
         <div class="div-adsense w3-center">
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- bottom_block -->
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:728px;height:120px"
-               data-ad-client="ca-pub-8708315484895922"
-               data-ad-slot="9285863583"></ins>
-          <script>
-               (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
+            <div id="844717441">
+                <script type="text/javascript">
+                    try {
+                        window._mNHandle.queue.push(function (){
+                            window._mNDetails.loadTag("844717441", "728x90", "844717441");
+                        });
+                    }
+                    catch (error) {}
+                </script>
+            </div>
         </div>
 
 
