@@ -56,12 +56,23 @@ body{
     font-size: 2vh;
 }
 
+.smile{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top:50px;
+    left: 50px;
+    background-image: url('../img/smile.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
 .virus{
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 2vw;
+    height: 2vw;
     background-image: url('../img/virus.png');
-    background-size: 30px 30px;
+    background-size: 2vw 2vw;
     background-repeat: no-repeat;
 }
 

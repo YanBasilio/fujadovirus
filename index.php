@@ -12,16 +12,10 @@
         <title>Fuja do Virus</title>
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="content/css/w3.css?<?=strtotime(date('Y-m-d H:i:s'))?>">
-        <link rel="stylesheet" type="text/css" href="content/css/style.css?<?=strtotime(date('Y-m-d H:i:s'))?>" />
-        <script type="text/javascript">
-            window._mNHandle = window._mNHandle || {};
-            window._mNHandle.queue = window._mNHandle.queue || [];
-            medianet_versionId = "3121199";
-        </script>
-        <script src="https://contextual.media.net/dmedianet.js?cid=8CU235288" async="async"></script>
-        
+        <link rel="stylesheet" type="text/css" href="content/css/style.css?<?=strtotime(date('Y-m-d H:i:s'))?>" />        
     </head>
     <body>
+
         <div id="regressiva"></div>
         
         <div id="campo" class="w3-card-4">
@@ -29,7 +23,7 @@
             <div id="parede_campo_right" class="parede_campo"></div>
             <div id="parede_campo_bottom" class="parede_campo"></div>
             <div id="parede_campo_left" class="parede_campo"></div>
-            
+            <div id="smile" class="smile" style="display:none"></div>
             <div id="modal_inicio" class="w3-container w3-card-4">
                 <div class="w3-center">
                     <img src="content/img/coroninha.png" style="width:10vh;"/>
@@ -114,8 +108,6 @@
             </div>
         </div>
 
-
-
         <!-- MODAL RECORDE -->
         <div id="modal_recorde" class="w3-modal">
             <div class="w3-modal-content">
@@ -138,7 +130,6 @@
             </div>
         </div> <!-- /MODAL RECORDE -->
         
-
         <!-- MODAL PERDA -->
         <div id="modal_perda" class="w3-modal">
             <div class="w3-modal-content">
@@ -159,11 +150,11 @@
 
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
 
     <!-- FUJADOVIRUS  -->
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="content/js/detectmobilebrowser.js?<?=strtotime(date('Y-m-d H:i:s'))?>"></script>
     <script src="content/js/script.js?<?=strtotime(date('Y-m-d H:i:s'))?>"></script>
     

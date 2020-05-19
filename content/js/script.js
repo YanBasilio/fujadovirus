@@ -40,7 +40,6 @@ $(document).ready(function(){
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
 
-
     // dbReference = firebase.database();
 });
 
@@ -50,6 +49,10 @@ function contagem_regressiva(){
     $('#modal_perda').attr('style', 'display:none');
     $('#modal_recorde').attr('style', 'display:none');
     $('#regressiva').attr('style', 'display:block');
+    
+    if(mobile){
+        $('#smile').show();
+    }
 
     $('#regressiva').html(regressiva);
 
@@ -63,7 +66,12 @@ function contagem_regressiva(){
             contagem_regressiva();
         },1000);
     }else{
-        $('#regressiva').html("FUJA!!");
+         if(mobile){
+            $('#regressiva').html("Arraste o boneco para jogar!");
+        }else{
+            $('#regressiva').html("FUJA!!");
+        }  
+
         setTimeout(()=>{
             $('#regressiva').attr('style', 'display:none');
             desbloqueado = true;
@@ -91,26 +99,52 @@ function inicia_jogo(){
             
             insere_virus();
             desbloqueia_movimento();
-        
-            $(document).on('mousemove', function(mouse){
-                mouse_x = mouse.clientX;
-                mouse_y = mouse.clientY;
-                parado = 0;
-                var tg = mouse.target;
-                
-                if($(tg).attr('id') != 'campo'){
-                    perde_partida('saiu_tela');
-                }
-        
-                if(bool){
-                    bool = false;
-                    $('.virus').animate({
-                        top: (mouse_y - 30)+'px',
-                        left:(mouse_x - 30)+'px'
-                    }, niveis_dificultade["segue_cursor"] );
+            
+            if(mobile){
+                $('body').css('position', 'fixed');
+                var smile = document.getElementById('smile');
+
+                smile.addEventListener('touchmove', function(e) {
+                    // grab the location of touch
+                    var p = e.targetTouches[0];
+                    parado = 0;
                     
-                }
-            });
+                    // assign smile new coordinates based on the touch.
+                    smile.style.left = p.pageX + 'px';
+                    smile.style.top = p.pageY + 'px';
+                    if(bool){
+                        bool = false;
+                        $('.virus').animate({
+                            top: p.pageY+'px',
+                            left: p.pageX+'px'
+                        }, niveis_dificultade["segue_cursor"] );   
+                    }
+                });
+
+                // smile.addEventListener('touchend', function(e){
+                //     perde_partida('soltou');
+                // });
+            }else{
+                $(document).on('mousemove', function(mouse){
+                    mouse_x = mouse.clientX;
+                    mouse_y = mouse.clientY;
+                    parado = 0;
+                    var tg = mouse.target;
+                    
+                    if($(tg).attr('id') != 'campo'){
+                        perde_partida('saiu_tela');
+                    }
+            
+                    if(bool){
+                        bool = false;
+                        $('.virus').animate({
+                            top: (mouse_y - 30)+'px',
+                            left:(mouse_x - 30)+'px'
+                        }, niveis_dificultade["segue_cursor"] );
+                        
+                    }
+                });
+            }
         }
     });
     
@@ -134,8 +168,12 @@ function inicia_jogo(){
 
 }
 
+
+
+
 function insere_virus(){
     if(desbloqueado){
+        parado = 0;
         var max_x = window.innerWidth - 30;
         var max_y =  window.innerHeight - 160;
         
@@ -152,6 +190,10 @@ function insere_virus(){
         $('.virus').on('mouseenter', function(){
             perde_partida('virus');
         });
+
+        $('.virus').bind('hover', function (params) {
+            perde_partida('virus');
+        })
     
         parado++; //variavel para não ficar parado
         if(parado > niveis_dificultade['max_parado']){
@@ -195,6 +237,7 @@ function salvar_recorde() {
 
 function perde_partida(tipo = 'virus'){
     var qtd = $('.virus').length;
+    $('body').css('position', 'initial');
 
     if(desbloqueado){
         if(qtd > parseInt(recordes_atual.recorde)){
@@ -208,14 +251,15 @@ function perde_partida(tipo = 'virus'){
             if(tipo == 'virus'){
                 $('#titu-perda').html('Nããão!!');
                 $('#mensagem_perda').html('Você foi infectado com '+qtd+' virus.');
-
             }else if(tipo == 'saiu_tela'){
                 $('#titu-perda').html('Fique em casa!!');
                 $('#mensagem_perda').html('Você não respeitou o isolamento e acabou sendo infectado. \n\n Você resistiu a '+qtd+' vírus.');
-
             }else if(tipo == 'parado'){
                 $('#titu-perda').html('Não fique parado!');
                 $('#mensagem_perda').html('Não vale ficar parado, você resistiu a '+qtd+' vírus');
+            }else if(tipo == 'soltou'){
+                $('#titu-perda').html('Ohh Não!');
+                $('#mensagem_perda').html('Você deixou a mascara cair no chão e resistiu a '+qtd+' vírus');
             }
             
             $('#modal_perda').attr('style', 'display:block');

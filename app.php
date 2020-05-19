@@ -3,7 +3,7 @@
 if(isset($_GET['get'])){
     switch ($_GET['get']) {
         case 'configuracoes':
-            $configuracoes = json_decode(convert_uudecode(file_get_contents('configuracoes')));
+            $configuracoes = json_decode(convert_uudecode(file_get_contents('configuracoes.txt')));
 
             $nivel = $_POST['nivel'];
             echo json_encode($configuracoes->$nivel);
@@ -11,7 +11,7 @@ if(isset($_GET['get'])){
             
         break;
         case 'recordes':
-            $recordes = json_decode(convert_uudecode(file_get_contents('recordes')));
+            $recordes = json_decode(convert_uudecode(file_get_contents('recordes.txt')));
             // sdie($recordes);
             $nivel = $_POST['nivel'];
             echo json_encode($recordes->$nivel);
