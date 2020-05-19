@@ -109,6 +109,9 @@ function inicia_jogo(){
                     var p = e.targetTouches[0];
                     parado = 0;
                     
+                    if($('div[style="top: '+p.pageY+'px; left: '+p.pageX+'px;"').length > 0){
+                        perde_partida('virus');
+                    }
                     // assign smile new coordinates based on the touch.
                     smile.style.left = p.pageX + 'px';
                     smile.style.top = p.pageY + 'px';
@@ -121,9 +124,9 @@ function inicia_jogo(){
                     }
                 });
 
-                // smile.addEventListener('touchend', function(e){
-                //     perde_partida('soltou');
-                // });
+                smile.addEventListener('touchend', function(e){
+                    perde_partida('soltou');
+                });
             }else{
                 $(document).on('mousemove', function(mouse){
                     mouse_x = mouse.clientX;
@@ -168,12 +171,8 @@ function inicia_jogo(){
 
 }
 
-
-
-
 function insere_virus(){
     if(desbloqueado){
-        parado = 0;
         var max_x = window.innerWidth - 30;
         var max_y =  window.innerHeight - 160;
         
